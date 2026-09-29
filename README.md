@@ -13,7 +13,7 @@ The main diagram currently documented in this repository is **LCV FlowChart**, c
 - Power Automate
 - UiPath
 - UiPath Queue
-- On-Premises document storage
+- SharePoint On-Premises
 - Excel generation
 
 ## LCV FlowChart
@@ -50,13 +50,13 @@ Program Budaya?
               Program Budaya?
                ├── Bestie
                │     ├── Download document
-               │     └── Upload to On-Premises
+               │     └── Upload to SharePoint On-Premises
                │
                └── Selain Bestie
                      └── Create Excel
                            │
                            ▼
-                    Upload to On-Premises
+                Upload to SharePoint On-Premises
 ```
 
 ### Preview
@@ -80,7 +80,7 @@ The source file is maintained in the repository as the editable master diagram.
 | Power Automate | Retrieves and processes the latest data |
 | UiPath Queue | Receives queue information for automation |
 | UiPath | Processes LCV documents and generates output |
-| On-Premises | Destination for processed documents |
+| SharePoint On-Premises | Final destination for processed documents and generated files |
 | Excel | Output generated for applicable program types |
 
 ## Repository Structure
