@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowChart</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+  </script>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <span class="eyebrow">FLOWCHART</span>
+      <h1>Process Flow</h1>
+      <p>Editable browser-based flowchart powered by Mermaid.</p>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Example Process</h2>
+        <span class="badge">Mermaid</span>
+      </div>
+
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TD
+    A([Start]) --> B[Receive Request]
+    B --> C{Valid?}
+    C -- Yes --> D[Process Request]
+    C -- No --> E[Return for Revision]
+    D --> F[Complete]
+    E --> B
+    F --> G([End])
+        </pre>
+      </div>
+    </section>
+
+    <footer>
+      <a href="flowchart.md">View source</a>
+    </footer>
+  </main>
+</body>
+</html>
