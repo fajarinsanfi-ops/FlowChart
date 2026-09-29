@@ -37,6 +37,14 @@ Open `index.html` in a modern browser.
 
 The basic version does not require Node.js, npm, or a build process.
 
+## LCV Flowchart Preview
+
+The editable source is available in [LCV_FlowChart](./LCV_FlowChart).
+
+**Preview:** [Open LCV Flowchart in diagrams.net](https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffajarinsanfi-ops%2FFlowChart%2Fmain%2FLCV_FlowChart)
+
+> The preview opens the original draw.io diagram in the diagrams.net viewer. The repository keeps the `.drawio` source as the editable master file.
+
 ## Editing the Flowchart
 
 The diagram is written using **Mermaid syntax**.
