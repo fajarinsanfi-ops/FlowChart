@@ -1,89 +1,91 @@
 # FlowChart
 
-A lightweight repository for documenting and maintaining business process flowcharts using **draw.io** and web-based previews.
+Repository untuk menyimpan, mendokumentasikan, dan menampilkan **business process flowchart** secara terstruktur.
 
-## Overview
-
-This repository stores editable process diagrams together with documentation and browser-friendly previews.
-
-The main diagram currently documented in this repository is **LCV FlowChart**, covering the flow between:
-
-- Power Apps
-- SharePoint Online
-- Power Automate
-- UiPath
-- UiPath Queue
-- SharePoint On-Premises
-- Excel generation
+Fokus utama repository ini adalah dokumentasi **LCV FlowChart**, yang menggambarkan integrasi antara Power Apps, SharePoint Online, Power Automate, UiPath, dan SharePoint On-Premises.
 
 ## LCV FlowChart
 
-### Process Overview
+### Tujuan
 
-The LCV process starts when a user submits data through Power Apps. The data is stored in SharePoint Online and then processed by Power Automate.
+LCV FlowChart mendokumentasikan alur proses dari pengisian form oleh pengguna sampai dokumen atau hasil pemrosesan disimpan ke **SharePoint On-Premises**.
 
-The process includes program-type decisions that determine the subsequent Power Automate and UiPath actions.
-
-High-level flow:
+### Alur Utama
 
 ```text
+User
+  │
+  ▼
 Power Apps
-    │
-    ▼
+  │
+  │ Mengisi form
+  ▼
 SharePoint Online
-    │
-    ▼
+  │
+  │ Data tersimpan
+  ▼
 Power Automate
-    │
-    ▼
+  │
+  │ Mencari data terbaru
+  ▼
 Program Budaya?
-    ├── Bestie
-    │     └── Rename / Queue processing
-    │
-    └── Selain Bestie
-          └── Queue processing
+  │
+  ├── Bestie
+  │     │
+  │     ├── Rename File
+  │     │
+  │     └── Kirim Queue ID
+  │
+  └── Selain Bestie
+        │
+        └── Kirim proses ke UiPath
                     │
                     ▼
                   UiPath
                     │
                     ▼
               Program Budaya?
+               │
                ├── Bestie
-               │     ├── Download document
-               │     └── Upload to SharePoint On-Premises
+               │     │
+               │     ├── Download dokumen
+               │     └── Upload dokumen
                │
                └── Selain Bestie
+                     │
                      └── Create Excel
-                           │
-                           ▼
-                Upload to SharePoint On-Premises
+                              │
+                              ▼
+                   SharePoint On-Premises
 ```
+
+> **Catatan:** Diagram sumber adalah referensi utama untuk detail koneksi, branching, dan urutan aktivitas. Flow di atas merupakan ringkasan dokumentasi agar alur mudah dipahami dari README.
 
 ### Preview
 
-**[Open LCV FlowChart in diagrams.net](https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffajarinsanfi-ops%2FFlowChart%2Fmain%2FLCV_FlowChart)**
+**[Buka LCV FlowChart di diagrams.net](https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffajarinsanfi-ops%2FFlowChart%2Fmain%2FLCV_FlowChart)**
 
-The preview opens the original diagram directly in the diagrams.net viewer.
+Preview menggunakan file sumber yang tersimpan di repository sehingga diagram dapat dilihat tanpa mengubah source.
 
-### Source File
+### Source Diagram
 
-[**LCV_FlowChart**](./LCV_FlowChart)
+**[LCV_FlowChart](./LCV_FlowChart)**
 
-The source file is maintained in the repository as the editable master diagram.
+File tersebut merupakan **draw.io XML source** yang dapat diedit menggunakan diagrams.net. File sengaja dipertahankan sebagai source diagram sehingga perubahan proses dapat dilacak melalui Git.
 
-## Process Components
+## Komponen Proses
 
-| Component | Role |
+| Komponen | Fungsi |
 |---|---|
-| Power Apps | User interface for submitting LCV data |
-| SharePoint Online | Stores submitted data |
-| Power Automate | Retrieves and processes the latest data |
-| UiPath Queue | Receives queue information for automation |
-| UiPath | Processes LCV documents and generates output |
-| SharePoint On-Premises | Final destination for processed documents and generated files |
-| Excel | Output generated for applicable program types |
+| **Power Apps** | Antarmuka pengguna untuk mengisi form LCV |
+| **SharePoint Online** | Menyimpan data hasil pengisian form |
+| **Power Automate** | Mencari data terbaru dan menjalankan orkestrasi proses |
+| **UiPath Queue** | Menyediakan mekanisme antrean untuk proses otomasi UiPath |
+| **UiPath** | Menjalankan proses dokumen dan menghasilkan output |
+| **SharePoint On-Premises** | Tujuan akhir penyimpanan dokumen/hasil proses |
+| **Excel** | Output yang dibuat untuk alur program tertentu |
 
-## Repository Structure
+## Struktur Repository
 
 ```text
 FlowChart/
@@ -94,126 +96,112 @@ FlowChart/
 └── LCV_FlowChart
 ```
 
-### File Description
-
-| File | Description |
+| File | Keterangan |
 |---|---|
-| `README.md` | Project and process documentation |
-| `index.html` | Browser-based flowchart page |
-| `style.css` | Styling for the browser page |
-| `flowchart.md` | Mermaid flowchart source/example |
-| `LCV_FlowChart` | Editable draw.io XML diagram |
+| `README.md` | Dokumentasi project dan LCV FlowChart |
+| `index.html` | Halaman browser untuk menampilkan flowchart |
+| `style.css` | Styling halaman browser |
+| `flowchart.md` | Source flowchart berbasis Mermaid |
+| `LCV_FlowChart` | Source diagram draw.io dalam format XML |
 
-## Working With LCV_FlowChart
+## Membuka dan Mengedit Diagram
 
-### Open the editable diagram
+### Dengan diagrams.net
 
-Use **draw.io / diagrams.net** and open:
+1. Buka **[diagrams.net](https://app.diagrams.net/)**.
+2. Pilih opsi untuk membuka diagram dari device/repository.
+3. Buka file `LCV_FlowChart`.
+4. Lakukan perubahan pada diagram.
+5. Simpan kembali source diagram.
+6. Commit perubahan ke branch yang sesuai.
+7. Perbarui README jika struktur atau logika proses berubah.
 
-```text
-LCV_FlowChart
-```
+### Hanya Melihat Diagram
 
-You can use the online editor at:
-
-**[diagrams.net](https://app.diagrams.net/)**
-
-### View without editing
-
-Use the README preview:
+Gunakan preview berikut:
 
 **[Open LCV FlowChart Preview](https://viewer.diagrams.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffajarinsanfi-ops%2FFlowChart%2Fmain%2FLCV_FlowChart)**
 
-### Update the diagram
-
-1. Open `LCV_FlowChart` in diagrams.net.
-2. Make the required process or layout changes.
-3. Save/export the updated diagram.
-4. Replace the repository source file.
-5. Update this README if the process logic has changed.
-
 ## Browser Flowchart
 
-The repository also contains a lightweight Mermaid-based browser page.
+Repository juga menyediakan flowchart berbasis **Mermaid** melalui `index.html`.
 
-Open:
+File terkait:
 
-```text
-index.html
-```
+- `index.html`
+- `style.css`
+- `flowchart.md`
 
-The page can be used as a simple alternative for documenting smaller process flows.
+Untuk penggunaan dasar, tidak diperlukan Node.js, npm, atau build process.
 
-## Local Usage
+## Menjalankan Secara Lokal
 
-Clone the repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/fajarinsanfi-ops/FlowChart.git
 cd FlowChart
 ```
 
-For the basic browser flowchart, open:
+Kemudian buka:
 
 ```text
 index.html
 ```
 
-No build process is required.
+di browser modern.
 
-## Deployment
+## GitHub Pages
 
-The HTML/CSS portion can be deployed as a static website using GitHub Pages.
+Bagian HTML/CSS dapat dipublikasikan sebagai static site menggunakan GitHub Pages.
 
-Recommended configuration:
+Konfigurasi yang digunakan:
 
 ```text
 Branch: main
 Folder: / (root)
 ```
 
-The draw.io source remains available through the repository even when the browser preview is deployed separately.
+Source diagram draw.io tetap disimpan di repository dan tidak bergantung pada deployment halaman web.
 
-## Documentation Guidelines
+## Pedoman Perubahan Diagram
 
-When adding a new flowchart:
+Saat memperbarui LCV FlowChart:
 
-1. Use a descriptive file name.
-2. Keep the editable diagram source in the repository.
-3. Add a preview link to the README.
-4. Document the major systems and process steps.
-5. Update the repository structure section.
-6. Keep the README aligned with the actual process.
+1. Pertahankan nama sistem dan proses agar konsisten.
+2. Jangan menghilangkan source diagram editable.
+3. Perbarui preview setelah source berubah.
+4. Perbarui ringkasan README jika alur bisnis berubah.
+5. Pastikan **SharePoint On-Premises** tetap terdokumentasi sebagai tujuan akhir jika memang demikian pada proses.
+6. Gunakan commit message yang menjelaskan perubahan.
+7. Hindari menyimpan kredensial, token, connection string, atau data sensitif di repository.
 
-## Technology
+## Teknologi
 
-| Technology | Purpose |
+| Teknologi | Penggunaan |
 |---|---|
-| draw.io / diagrams.net | Business process diagram |
-| Mermaid | Lightweight flowchart rendering |
-| HTML5 | Browser-based presentation |
-| CSS3 | UI styling |
-| GitHub | Source control and collaboration |
+| **draw.io / diagrams.net** | Membuat dan mengedit business process diagram |
+| **Mermaid** | Flowchart ringan berbasis teks |
+| **HTML5** | Presentasi flowchart melalui browser |
+| **CSS3** | Styling halaman |
+| **GitHub** | Version control dan kolaborasi |
 
 ## Roadmap
 
-Potential future improvements:
-
-- Embedded diagram preview directly in the web page
-- Interactive flowchart viewer
-- Multiple flowchart catalog
-- Diagram search and filtering
-- PNG/SVG export
-- Dark mode
-- Version history per process
-- Process documentation metadata
-- Automated diagram preview generation
-- GitHub Pages documentation site
+- [ ] Preview diagram langsung di halaman web
+- [ ] Interactive flowchart viewer
+- [ ] Katalog beberapa flowchart
+- [ ] Search dan filtering flowchart
+- [ ] Export PNG/SVG
+- [ ] Dark mode
+- [ ] Metadata dokumentasi proses
+- [ ] Automated diagram preview
+- [ ] GitHub Pages documentation site
 
 ## License
 
-This repository currently has no explicit open-source license.
+Repository ini belum memiliki lisensi open-source yang ditentukan secara eksplisit.
 
 ---
 
-**Repository:** [fajarinsanfi-ops/FlowChart](https://github.com/fajarinsanfi-ops/FlowChart)
+**Repository:** **[fajarinsanfi-ops/FlowChart](https://github.com/fajarinsanfi-ops/FlowChart)**
